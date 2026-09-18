@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 pragma Singleton
 import QtQuick
+import KOMOREBI.Services 1.0
 
 QtObject {
     // ── Colour aliases (re-exported from service) ─────────────────────────────

@@ -6,6 +6,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
+import KOMOREBI.Theme 1.0
 
 Row {
     id: root
@@ -20,11 +21,15 @@ Row {
         delegate: Rectangle {
             required property int index
             readonly property int  wsNum: index + 1
-            readonly property bool isActive: HyprlandIpc.activeWorkspace?.id === wsNum
+            readonly property bool isActive: Hyprland.focusedWorkspace?.id === wsNum
             readonly property bool hasWindows: {
-                // Check if any window lives in this workspace
-                for (var i = 0; i < HyprlandIpc.clients.length; i++) {
-                    if (HyprlandIpc.clients[i].workspace?.id === wsNum) return true
+                // Find this delegate's workspace among Hyprland's known workspaces,
+                // then check whether it has any toplevels (windows) open.
+                var list = Hyprland.workspaces.values
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i].id === wsNum) {
+                        return list[i].toplevels.values.length > 0
+                    }
                 }
                 return false
             }
@@ -46,7 +51,7 @@ Row {
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
-                onClicked: HyprlandIpc.dispatch("workspace " + wsNum)
+                onClicked: Hyprland.dispatch("workspace " + wsNum)
             }
         }
     }

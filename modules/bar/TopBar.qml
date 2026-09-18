@@ -21,10 +21,10 @@
 // ShapePath cubic bezier control points.
 // ─────────────────────────────────────────────────────────────────────────────
 import QtQuick
-import QtQuick.Shapes
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
+import KOMOREBI.Theme 1.0
 
 // TopBar is planted inside a PanelWindow in shell.qml
 Item {
@@ -82,52 +82,6 @@ Item {
         y:      parent.gR   // leave room above for the concave "ear" geometry
         width:  topBar.animWidth
         height: topBar.animHeight
-
-        // ── Full-island Shape: body + bottom rounded corners ─────────────────
-        // We draw the island body as a single Shape so we can clip content to it.
-        Shape {
-            id: islandShape
-            anchors.fill: parent
-            layer.enabled: true
-            layer.samples: 4    // MSAA
-
-            ShapePath {
-                id: bodyPath
-                fillColor:   Qt.rgba(
-                    Theme.surface.r,
-                    Theme.surface.g,
-                    Theme.surface.b,
-                    Theme.surfaceAlpha
-                )
-                strokeColor: Theme.outlineVariant
-                strokeWidth: 1
-
-                // Animated fill colour transitions with palette changes
-                Behavior on fillColor {
-                    ColorAnimation { duration: 400 }
-                }
-
-                // ── Path: clockwise from top-left corner ──────────────────────
-                // Top-left  → straight across top → top-right
-                // → convex arc bottom-right
-                // → straight bottom → convex arc bottom-left
-                // → back to top-left
-                startX: 0;  startY: 0      // top-left (flat, no radius here)
-
-                // Top edge — straight
-                PathLine { x: islandRoot.width; y: 0 }
-
-                // Bottom-right convex corner
-                PathArc {
-                    x: islandRoot.width;              y: islandRoot.height
-                    radiusX: topBar.bR;               radiusY: topBar.bR
-                    direction: PathArc.Clockwise
-                }
-
-                // Actually let's do it properly with PathQuad for rounded bottom corners
-                // Replace above with explicit corner segments:
-            }
-        }
 
         // ── Island body — drawn as Canvas for full custom path control ────────
         // Using Canvas here because ShapePath rounded-corner-only-on-some-sides

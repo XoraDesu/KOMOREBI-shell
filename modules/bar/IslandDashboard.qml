@@ -23,6 +23,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Basic    // StackLayout
+import KOMOREBI.Theme 1.0
 
 Item {
     id: root

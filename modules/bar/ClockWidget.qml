@@ -4,6 +4,7 @@
 // Wabi-Sabi aesthetic: minimal information, generous spacing, muted palette.
 // ─────────────────────────────────────────────────────────────────────────────
 import QtQuick
+import KOMOREBI.Theme 1.0
 
 Item {
     id: root

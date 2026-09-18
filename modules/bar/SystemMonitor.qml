@@ -19,6 +19,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
+import KOMOREBI.Theme 1.0
 
 Item {
     id: root
