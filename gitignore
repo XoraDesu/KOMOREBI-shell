@@ -1,0 +1,27 @@
+# ── KOMOREBI — .gitignore ───────────────────────────────────────────────────
+
+# Patches / diffs generated while working locally (e.g. from `git diff > x.patch`)
+*.patch
+*.diff
+
+# install.sh backup archives (~/.config/quickshell.bak.*) if ever created inside the repo
+quickshell.bak.*
+
+# Qt / QML build & cache artifacts
+*.qmlc
+*.jsc
+.qmlls-cache/
+
+# Editor / IDE junk
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
