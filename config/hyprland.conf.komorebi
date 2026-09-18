@@ -1,0 +1,35 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# KOMOREBI — Hyprland Integration Reference Configuration
+# Paste this into ~/.config/hypr/hyprland.conf
+# (install.sh configures these automatically)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Daemons ───────────────────────────────────────────────────────────────────
+exec-once = swww-daemon                     # Wallpaper daemon (required by MaterialYouService)
+exec-once = quickshell                      # KOMOREBI desktop shell
+
+# ── Global Shortcut Keybindings ───────────────────────────────────────────────
+# Launches the full-screen Stock Android / ChromeOS focused app drawer
+bind = SUPER, Space, global, quickshell:appLauncher
+bind = SUPER, D, global, quickshell:appLauncher
+
+# ── Layer Rules: Blur & Transparency ──────────────────────────────────────────
+# Optimizes native compositor blur for TopBar, HoverDock, and AppLauncher
+layerrule = blur, quickshell                # Enable backdrop blur
+layerrule = ignorezero, quickshell          # Skip fully transparent pixels
+layerrule = ignorealpha 0.5, quickshell     # Ignore semi-transparent edges in blur pass
+
+# ── Motion Physics: Matching Cyberpunk Snappy Curves ──────────────────────────
+# Keep Hyprland window movement matched with KOMOREBI's snappy easing
+bezier = komorebi_snap,     0.22, 1.0, 0.36, 1.0   # Fast-in, mechanical stop
+bezier = komorebi_collapse, 0.55, 0.0, 1.0, 0.45   # Rapid exit
+
+animation = windows,     1, 3,  komorebi_snap,     slide
+animation = windowsOut,  1, 2,  komorebi_collapse, slide
+animation = border,      1, 5,  komorebi_snap
+animation = fade,        1, 3,  komorebi_snap
+animation = workspaces,  1, 3,  komorebi_snap,     slide
+
+# ── Window Rules ──────────────────────────────────────────────────────────────
+# Prevent QuickShell panels from stealing focus undesirably
+windowrulev2 = nofocus, class:^(quickshell)$

@@ -1,0 +1,10 @@
+module KOMOREBI.Bar
+
+TopBar          1.0 TopBar.qml
+ClockWidget     1.0 ClockWidget.qml
+IslandDashboard 1.0 IslandDashboard.qml
+StatusPill      1.0 StatusPill.qml
+WorkspaceWidget 1.0 WorkspaceWidget.qml
+SystemMonitor   1.0 SystemMonitor.qml
+MediaPlayer     1.0 MediaPlayer.qml
+ControlCenter   1.0 ControlCenter.qml

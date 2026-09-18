@@ -1,0 +1,8 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// KOMOREBI — qmldir registration files
+// Tells QuickShell's QML engine which types live in each module directory.
+// ─────────────────────────────────────────────────────────────────────────────
+// theme/qmldir
+module KOMOREBI.Theme
+
+singleton Theme 1.0 Theme.qml

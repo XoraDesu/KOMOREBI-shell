@@ -1,0 +1,8 @@
+module KOMOREBI.Desktop
+
+DesktopOverlay    1.0 DesktopOverlay.qml
+ContextMenu       1.0 ContextMenu.qml
+WallpaperCarousel 1.0 WallpaperCarousel.qml
+MaterialSwitch    1.0 MaterialSwitch.qml
+FocusTimerWidget  1.0 FocusTimerWidget.qml
+ZenClockWidget    1.0 ZenClockWidget.qml

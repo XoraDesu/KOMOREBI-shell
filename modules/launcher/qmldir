@@ -1,0 +1,3 @@
+module KOMOREBI.Launcher
+
+AppLauncher 1.0 AppLauncher.qml

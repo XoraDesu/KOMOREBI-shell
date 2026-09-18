@@ -1,0 +1,3 @@
+module KOMOREBI.Services
+
+singleton MaterialYouService 1.0 MaterialYouService.qml
